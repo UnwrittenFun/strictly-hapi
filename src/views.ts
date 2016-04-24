@@ -66,7 +66,7 @@ export function Delete(route: string = "") {
   return View("DELETE", route);
 }
 
-interface IScope {
+export interface IScope {
   (project: string, linkedId: any, ...scopes: string[]): any;
   from(type: string, param: string);
 }

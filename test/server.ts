@@ -10,12 +10,8 @@ server.connection({ port: "3000" });
 
 bootstrap(server, AllViews, [], controllers);
 
-server.register([
-  {register: require("inject-then")},
-], function () {
-  server.start(err => {
-    if (err) {
-      throw err;
-    }
-  })
-});
+server.start(err => {
+  if (err) {
+    throw err;
+  }
+})

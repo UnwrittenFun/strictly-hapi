@@ -1,13 +1,14 @@
 {
   "name": "strictly-hapi",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "An abstraction layer for Hapi, written in TypeScript",
   "author": "James Birtles <unwrittenfun@gmail.com>",
   "main": "built/index.js",
   "typings": "built/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "npm run build && mocha built/test/test.js"
+    "test": "npm run build && mocha built/test/test.js",
+    "prepublish": "tsc && tsc -d && mocha built/test/test.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,6 @@
     "hapi": "^13.3.0",
     "joi": "^8.0.5",
     "lodash": "^4.9.0",
-    "reflect-metadata": "^0.1.3",
     "ts-injectable": "0.0.2"
   },
   "license": "MIT",

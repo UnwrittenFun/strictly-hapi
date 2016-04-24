@@ -1,5 +1,3 @@
-import "reflect-metadata";
-
 import * as dot from "dot-object";
 import * as Hapi from "hapi";
 import * as Boom from "boom";
