@@ -1,6 +1,6 @@
 {
   "name": "strictly-hapi",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "An abstraction layer for Hapi, written in TypeScript",
   "author": "James Birtles <unwrittenfun@gmail.com>",
   "main": "built/index.js",

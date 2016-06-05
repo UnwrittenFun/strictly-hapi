@@ -3,7 +3,7 @@ import * as Hapi from "hapi";
 export class RouteInfo {
   public providers: any = {};
 
-  constructor(public req: Hapi.Request) {
+  constructor(public req: Hapi.Request, public reply: Hapi.IReply) {
   }
 
   provide(key: any, value?: any) {

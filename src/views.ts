@@ -66,6 +66,15 @@ export function Delete(route: string = "") {
   return View("DELETE", route);
 }
 
+export function Config(config: any) {
+  return function (target: any, key: string, descriptor: any) {
+    target[key].route = target[key].route || {};
+    target[key].route.config = target[key].route.config || {};
+    target[key].route.config = _.assign({}, target[key].route.config, config);
+    return descriptor;
+  }
+}
+
 export interface IScope {
   (project: string, linkedId: any, ...scopes: string[]): any;
   from(type: string, param: string);

@@ -35,7 +35,7 @@ export function bootstrap(server: Hapi.Server, Route: any, injectables: any[], c
     routeConfig.handler = (function (handler, types, controllers) {
       return function (request, reply) {
         if (profile) console.time(request.path + " overall");
-        let routeInfo = new RouteInfo(request);
+        let routeInfo = new RouteInfo(request, reply);
 
         if (profile) console.time(request.path + " scopes");
         Promise.resolve()
@@ -85,7 +85,7 @@ export function bootstrap(server: Hapi.Server, Route: any, injectables: any[], c
             return handler.apply(this, Injector.compile(types, routeInfo.assembleProviders()))
           })
           .then(function (res) {
-            reply(res);
+            if (res != null) routeInfo.reply(res);
             if (profile) console.timeEnd(request.path + " handler");
             if (profile) console.timeEnd(request.path + " overall");
           })
