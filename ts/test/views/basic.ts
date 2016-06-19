@@ -29,7 +29,6 @@ export class BasicView {
   @Get("/controller")
   @Pre("basic.get")
   getFromController(@Inject("result") result: any) {
-    console.log("Get from controller", result);
     return result; 
   }
   

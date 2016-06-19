@@ -1,4 +1,4 @@
 node_modules/
-typings/
-test/
-built/test/
+ts/typings/
+ts/test/
+js/test/

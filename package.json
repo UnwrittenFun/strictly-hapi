@@ -3,12 +3,12 @@
   "version": "0.0.5",
   "description": "An abstraction layer for Hapi, written in TypeScript",
   "author": "James Birtles <unwrittenfun@gmail.com>",
-  "main": "built/index.js",
-  "typings": "built/index.d.ts",
+  "main": "js/index.js",
+  "typings": "js/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "test": "npm run build && mocha built/test/test.js",
-    "prepublish": "tsc && tsc -d && mocha built/test/test.js"
+    "build": "cd ts/ && tsc && cd ..",
+    "test": "npm run build && mocha js/test/test.js",
+    "prepublish": "npm test"
   },
   "repository": {
     "type": "git",
