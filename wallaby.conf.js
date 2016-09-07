@@ -5,7 +5,8 @@ module.exports = wallaby => ({
         '!src/**/*.test.ts',
     ],
     tests: [
-        'src/**/*.test.ts'
+        'src/**/*.test.ts',
+        '!src/**/*.integration.test.ts',
     ],
     env: {
         type: 'node',

@@ -5,10 +5,12 @@ export class RouteNode {
     parent: RouteTree;
     method: string;
     path: string;
+    handler: Function;
 
-    constructor(method: string, path: string) {
+    constructor(method: string, path: string, handler: Function = () => {}) {
         this.method = method;
         this.path = path;
+        this.handler = handler;
     }
 
     get absolutePath(): string {

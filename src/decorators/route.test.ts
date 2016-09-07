@@ -14,7 +14,7 @@ const FAKE_ACCESSOR_DESCRIPTOR = res => ({
 });
 
 test("creates a route tree if none exists", t => {
-    const target = {};
+    const target = { foo() {} };
     Route("GET", "")(target, "foo", FAKE_METHOD_DESCRIPTOR);
 
     const tree: RouteTree = Reflect.get(target, symbols.routes);
@@ -24,7 +24,7 @@ test("creates a route tree if none exists", t => {
 
 test("doesn't overwrite existing trees", t => {
     const expectedTree = new RouteTree("");
-    const target = { [symbols.routes]: expectedTree };
+    const target = { [symbols.routes]: expectedTree, foo() {} };
     Route("GET", "")(target, "foo", FAKE_METHOD_DESCRIPTOR);
 
     const actualTree = Reflect.get(target, symbols.routes);
@@ -32,7 +32,7 @@ test("doesn't overwrite existing trees", t => {
 });
 
 test("adds a node with the given details", t => {
-    const target = {};
+    const target = { foo() {} };
     Route("GET", "foo/bar")(target, "foo", FAKE_METHOD_DESCRIPTOR);
 
     const tree: RouteTree = Reflect.get(target, symbols.routes);
@@ -43,7 +43,7 @@ test("adds a node with the given details", t => {
 });
 
 test("defaults path to an empty string", t => {
-    const target = {};
+    const target = { foo() {} };
     Route("GET")(target, "foo", FAKE_METHOD_DESCRIPTOR);
 
     const tree: RouteTree = Reflect.get(target, symbols.routes);
@@ -52,7 +52,7 @@ test("defaults path to an empty string", t => {
 });
 
 test("route aliases work", t => {
-    const target = {};
+    const target = { foo() {} };
 
     Get()(target, "foo", FAKE_METHOD_DESCRIPTOR);
     Put()(target, "foo", FAKE_METHOD_DESCRIPTOR);
@@ -71,7 +71,7 @@ test("route aliases work", t => {
 });
 
 test("it normalises method names", t => {
-    const target = {};
+    const target = { foo() {} };
     Route("get")(target, "foo", FAKE_METHOD_DESCRIPTOR);
 
     const tree: RouteTree = Reflect.get(target, symbols.routes);

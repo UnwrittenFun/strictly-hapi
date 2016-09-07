@@ -17,7 +17,7 @@ export function Route(method: string = "", path: string = "") {
             return;
         }
 
-        const node = new RouteNode(method.toUpperCase(), path);
+        const node = new RouteNode(method.toUpperCase(), path, target[key].bind(target));
         rootTree.appendNode(node);
     }
 }

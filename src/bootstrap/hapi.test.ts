@@ -1,6 +1,7 @@
 import { bootstrapHapi } from "./hapi";
 import { Route } from "../decorators/route";
 import test from "ava";
+import { Server } from "hapi";
 
 class MockHapiServer {
     routes: any[] = [];
@@ -11,7 +12,7 @@ class MockHapiServer {
 }
 
 test("throws when a root has no children", t => {
-    t.throws(() => bootstrapHapi(new MockHapiServer(), {}), "No child routes found for root object.");
+    t.throws(() => bootstrapHapi(new MockHapiServer() as any, {}), "No child routes found for root object.");
 });
 
 test("registers routes with the server", t => {
@@ -22,7 +23,7 @@ test("registers routes with the server", t => {
         getFoo() {}
     }
 
-    bootstrapHapi(server, new RootView());
+    bootstrapHapi(server as any, new RootView());
 
     t.is(server.routes.length, 1);
     t.is(server.routes[0].path, "/");
@@ -44,7 +45,7 @@ test("correctly registers sub routes", t => {
         }
     }
 
-    bootstrapHapi(server, new RootView());
+    bootstrapHapi(server as any, new RootView());
 
     t.is(server.routes.length, 1);
     t.is(server.routes[0].path, "/foo/bar");

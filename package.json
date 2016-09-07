@@ -9,6 +9,7 @@
     "build": "tsc",
     "clean": "rm -rf ./dist",
     "test": "npm run clean && npm run build && ava dist/**/*.test.js",
+    "integration": "npm run clean && npm run build && ava dist/**/*.integration.test.js",
     "prepublish": "npm test"
   },
   "repository": {
@@ -20,7 +21,9 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/hapi": "^13.0.34",
     "ava": "^0.16.0",
+    "hapi": "^15.0.3",
     "typescript": "^2.0.0"
   }
 }
