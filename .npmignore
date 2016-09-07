@@ -1,4 +1,2 @@
 node_modules/
-ts/typings/
-ts/test/
-js/test/
+dist/**/*.spec.js
